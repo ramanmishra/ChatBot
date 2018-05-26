@@ -1,12 +1,13 @@
+import os
+
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
-import os
 
 bot = ChatBot('Bot')
 bot.set_trainer(ListTrainer)
 
-for files in os.listdir('E:/Development\ChatterBotCorpus\chatterbot-corpus-master\chatterbot_corpus\data\english/'):
-             data = open('E:/Development\ChatterBotCorpus\chatterbot-corpus-master\chatterbot_corpus\data\english/'+files,'r').readlines()
+for files in os.listdir('C:\makathon\ChatBot'):
+             data = open('C:\makathon\ChatBot\data\\'+files,'r').readlines()
              bot.train(data)
 
 while True:
