@@ -32,7 +32,7 @@ while True:
             message = r.recognize_google(audio)
             if message.strip().lower() != 'bye':
                 reply = bot.get_response(message)
-                if message.strip() == reply:
+                if message.strip() == reply or message.strip()=='I am sorry, but I do not understand.':
                      print('Kindly Contact Vidya/Monali for human assistance!!!')   
                 print('Chatbot:',reply)
             if message.strip().lower() =='bye':
