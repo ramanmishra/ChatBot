@@ -17,7 +17,7 @@ while True:
             # instead of `r.recognize_google(audio)`
             print("You said: " + r.recognize_google(audio))
             message = r.recognize_google(audio)
-            if message.strip()!='Bye':
+            if message.strip() != 'Bye':
                 reply = bot.get_response(message)
                 print('Chatbot:',reply)
             if message.strip()=='Bye':

@@ -6,8 +6,8 @@ from chatterbot.trainers import ListTrainer
 bot = ChatBot('Bot')
 bot.set_trainer(ListTrainer)
 
-for files in os.listdir('C:\makathon\data'):
-             data = open('C:\makathon\data\\'+files,'r').readlines()
+for files in os.listdir('C:\makathon\ChatBot'):
+             data = open('C:\makathon\ChatBot\data\\'+files,'r').readlines()
              bot.train(data)
 
 while True:
