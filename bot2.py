@@ -17,10 +17,10 @@ while True:
             # instead of `r.recognize_google(audio)`
             print("You said: " + r.recognize_google(audio))
             message = r.recognize_google(audio)
-            if message.strip() != 'Bye':
+            if message.strip().lower() != 'bye':
                 reply = bot.get_response(message)
                 print('Chatbot:',reply)
-            if message.strip()=='Bye':
+            if message.strip().lower() =='bye':
                 print('Chatbot:Bye')
                 break
         except sr.UnknownValueError:
