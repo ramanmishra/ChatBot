@@ -1,13 +1,16 @@
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 import speech_recognition as sr
-bot = ChatBot('Bot')
+#read_only will make sure that bot doesn't learn anything new on it's own
+bot = ChatBot('Bot',read_only=True)
 bot.set_trainer(ListTrainer)
 
 while True:
         r = sr.Recognizer()
         with sr.Microphone() as source:
             print("Say something!")
+            #will remove noise which comes when microphone is used
+            r.adjust_for_ambient_noise(source)
             audio = r.listen(source)
 
         # Speech recognition using Google Speech Recognition
@@ -19,6 +22,8 @@ while True:
             message = r.recognize_google(audio)
             if message.strip().lower() != 'bye':
                 reply = bot.get_response(message)
+                if message.strip() == reply:
+                     print('Kindly Contact Vidya/Monali for human assistance!!!')   
                 print('Chatbot:',reply)
             if message.strip().lower() =='bye':
                 print('Chatbot:Bye')
