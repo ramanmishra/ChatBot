@@ -2,7 +2,7 @@ from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 import speech_recognition as sr
 #read_only will make sure that bot doesn't learn anything new on it's own
-bot = ChatBot('Bot',read_only=True,storage_adapter='chatterbot.storage.SQLStorageAdapter',
+bot = ChatBot('Bot',read_only=True,
               logic_adapters=[
         {
             'import_path': 'chatterbot.logic.BestMatch'
@@ -28,13 +28,15 @@ while True:
             # for testing purposes, we're just using the default API key
             # to use another API key, use `r.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
             # instead of `r.recognize_google(audio)`
-            print("You said: " + r.recognize_google(audio))
             message = r.recognize_google(audio)
+            print("You said: " + message)
+            
             if message.strip().lower() != 'bye':
                 reply = bot.get_response(message)
-                if message.strip() == reply or message.strip()=='I am sorry, but I do not understand.':
-                     print('Kindly Contact Vidya/Monali for human assistance!!!')   
-                print('Chatbot:',reply)
+                if message.strip() == reply or reply.strip()=='I am sorry, but I do not understand.':
+                     print('Kindly Contact Vidya/Monali for human assistance!!!')
+                else:
+                     print('Chatbot:',reply)
             if message.strip().lower() =='bye':
                 print('Chatbot:Bye')
                 break
